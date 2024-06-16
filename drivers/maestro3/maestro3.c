@@ -385,6 +385,7 @@ static int snd_m3_pcm_stop(struct snd_m3 *chip, struct m3_dma *s,
 static int
 snd_m3_pcm_trigger(struct snd_pcm_substream *subs, int cmd)
 {
+	dev_dbg(chip->card->dev,"m3 pcm trigger");
 	struct snd_m3 *chip = snd_pcm_substream_chip(subs);
 	struct m3_dma *s = subs->runtime->private_data;
 	int err = -EINVAL;
@@ -423,6 +424,7 @@ snd_m3_pcm_trigger(struct snd_pcm_substream *subs, int cmd)
 static void 
 snd_m3_pcm_setup1(struct snd_m3 *chip, struct m3_dma *s, struct snd_pcm_substream *subs)
 {
+	dev_dbg(chip->card->dev,"m3 pcm setup 1");
 	int dsp_in_size, dsp_out_size, dsp_in_buffer, dsp_out_buffer;
 	struct snd_pcm_runtime *runtime = subs->runtime;
 
@@ -1267,6 +1269,7 @@ static struct ac97_initial_values ac97_initial_values[] = {
 
 void snd_m3_ac97_init (struct snd_card *card)
 {
+	dev_dbg(chip->card->dev,"m3 ac97 init");
   struct snd_m3 *chip = card->private_data;
   struct snd_ac97 *ac97 = chip->ac97;
   int i;
@@ -1302,6 +1305,7 @@ static void snd_m3_remote_codec_config(struct snd_m3 *chip, int isremote)
  */
 static int snd_m3_try_read_vendor(struct snd_m3 *chip)
 {
+	dev_dbg(chip->card->dev,"m3 try read vendor");
 	u16 ret;
 
 	if (snd_m3_ac97_wait(chip))
@@ -1393,6 +1397,7 @@ static void snd_m3_ac97_reset(struct snd_m3 *chip)
 
 static int snd_m3_mixer(struct snd_m3 *chip)
 {
+	dev_dbg(chip->card->dev,"m3 mixer");
 #if 0
 	struct snd_ac97_bus *pbus;
 	struct snd_ac97_template ac97;
@@ -1456,6 +1461,7 @@ static const u16 minisrc_lpf[MINISRC_LPF_LEN] = {
 
 static void snd_m3_assp_init(struct snd_m3 *chip)
 {
+	dev_dbg(chip->card->dev,"m3 assp init");
 	unsigned int i;
 	const __le16 *data;
 
@@ -1598,6 +1604,7 @@ static int snd_m3_assp_client_init(struct snd_m3 *chip, struct m3_dma *s, int in
 static void
 snd_m3_amp_enable(struct snd_m3 *chip, int enable)
 {
+	dev_dbg(chip->card->dev,"m3 amp enable");
 	int io = chip->iobase;
 	u16 gpo, polarity;
 
@@ -1622,6 +1629,7 @@ snd_m3_amp_enable(struct snd_m3 *chip, int enable)
 static void
 snd_m3_hv_init(struct snd_m3 *chip)
 {
+	dev_dbg(chip->card->dev,"m3 hv init");
 	unsigned long io = chip->iobase;
 	u16 val = GPI_VOL_DOWN | GPI_VOL_UP;
 
@@ -1645,6 +1653,7 @@ snd_m3_hv_init(struct snd_m3 *chip)
 static int
 snd_m3_chip_init (struct snd_m3 *chip, int spdif)
 {
+	dev_dbg(chip->card->dev,"m3 chip init");
 	struct pci_dev *pcidev = chip->pci;
 	unsigned long io = chip->iobase;
 	u32 n;
@@ -1730,6 +1739,7 @@ snd_m3_chip_init (struct snd_m3 *chip, int spdif)
 static void
 snd_m3_enable_ints(struct snd_m3 *chip)
 {
+	dev_dbg(chip->card->dev,"m3 enable ints");
 	unsigned long io = chip->iobase;
 	unsigned short val;
 
@@ -1749,6 +1759,7 @@ snd_m3_enable_ints(struct snd_m3 *chip)
 
 static void snd_m3_free(struct snd_card *card)
 {
+	dev_dbg(chip->card->dev,"m3 free");
 	struct snd_m3 *chip = card->private_data;
 	struct m3_dma *s;
 	int i;
@@ -1909,6 +1920,7 @@ snd_m3_probe (struct snd_card *card, struct pci_dev *pci,
 	      int enable_amp,
 	      int amp_gpio)
 {
+	dev_dbg(card->dev, "PROBING!!");
 	struct snd_m3 *chip;
 	int i, err;
         u32 iobase;

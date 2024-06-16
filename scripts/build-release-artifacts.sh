@@ -53,7 +53,7 @@ unzip -j "/tmp/sbemu_usb_img/ctmouse.zip" "BIN/CTMOUSE.EXE" -d "ctmouse"
 sed -i 's/DEVICE=\\FREEDOS\\BIN\\HIMEMX.EXE/DEVICE=\\JEMM\\JEMMEX.EXE MAXEXT=2097152\nDEVICE=\\JEMM\\JLOAD.EXE \\JEMM\\QPIEMU.DLL/g' fdconfig.sys
 mv setup.bat setup.bak
 echo 'LH \HDPMI\HDPMI32I.EXE' > setup.bat
-echo 'LH \SBEMU\SBEMU.EXE' >> setup.bat
+echo 'LH \SBEMU\SBEMU.EXE /DBG0' >> setup.bat
 echo 'LH \CTMOUSE\CTMOUSE.EXE' >> setup.bat
 popd
 rm JemmB_v584.zip
