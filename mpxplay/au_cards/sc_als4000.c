@@ -5,7 +5,7 @@
 
 #ifdef AU_CARDS_LINK_ALS4000
 
-#define ALS4000_DEBUG 0
+#define ALS4000_DEBUG 1
 
 #if ALS4000_DEBUG
 #define als4000dbg(...) do { DBG_Logi("ALS4000: "); DBG_Logi(__VA_ARGS__); } while (0)

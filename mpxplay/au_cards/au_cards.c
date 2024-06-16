@@ -22,7 +22,7 @@
 #include "au_cards.h"
 #include "dmairq.h"
 
-#define AU_CARDS_DEBUG 0
+#define AU_CARDS_DEBUG 1
 
 #if AU_CARDS_DEBUG
 #include "dpmi/dbgutil.h"

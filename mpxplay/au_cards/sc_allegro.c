@@ -3,9 +3,11 @@
 
 #include "au_linux.h"
 
+#define AU_CARDS_LINK_ALLEGRO 1
+
 #ifdef AU_CARDS_LINK_ALLEGRO
 
-#define ALLEGRO_DEBUG 0
+#define ALLEGRO_DEBUG 1
 
 #if ALLEGRO_DEBUG
 #define allegrodbg(...) do { DBG_Logi("Allegro: "); DBG_Logi(__VA_ARGS__); } while (0)

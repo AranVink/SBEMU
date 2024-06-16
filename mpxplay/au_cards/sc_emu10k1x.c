@@ -5,7 +5,7 @@
 
 #ifdef AU_CARDS_LINK_EMU10K1X
 
-#define EMU10K1X_DEBUG 0
+#define EMU10K1X_DEBUG 1
 
 #if EMU10K1X_DEBUG
 #define emu10k1xdbg(...) do { DBG_Logi("EMU10K1X: "); DBG_Logi(__VA_ARGS__); } while (0)
