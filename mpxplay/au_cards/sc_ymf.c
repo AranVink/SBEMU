@@ -15,7 +15,7 @@
 
 #define VOICE_TO_USE 0
 
-#define YMF_DEBUG 1
+#define YMF_DEBUG 0
 
 //#define YSBEMU_CONFIG_UTIL 1  // define on make command line to build ysbemu
 
