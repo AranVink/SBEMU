@@ -166,7 +166,7 @@ static uint32_t MAIN_SB_DSP_ReadINT16BitACK(uint32_t port, uint32_t val, uint32_
 }
 
 int mpu_state = 0;
-#define MPU_DEBUG 1
+#define MPU_DEBUG 0
 #if MPU_DEBUG
 static int mpu_debug = 0;
 static int mpu_dbg_ctr = 0;
