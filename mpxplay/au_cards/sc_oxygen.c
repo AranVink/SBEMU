@@ -5,7 +5,7 @@
 
 #ifdef AU_CARDS_LINK_OXYGEN
 
-#define OXYGEN_DEBUG 1
+#define OXYGEN_DEBUG 0
 
 #if OXYGEN_DEBUG
 #define oxygendbg(...) do { DBG_Logi("OXYGEN: "); DBG_Logi(__VA_ARGS__); } while (0)

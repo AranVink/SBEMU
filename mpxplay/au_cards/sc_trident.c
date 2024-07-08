@@ -5,7 +5,7 @@
 
 #ifdef AU_CARDS_LINK_TRIDENT
 
-#define TRIDENT_DEBUG 1
+#define TRIDENT_DEBUG 0
 
 #if TRIDENT_DEBUG
 #define tridentdbg(...) do { DBG_Logi("TRIDENT: "); DBG_Logi(__VA_ARGS__); } while (0)

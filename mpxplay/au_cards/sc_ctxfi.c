@@ -5,7 +5,7 @@
 
 #ifdef AU_CARDS_LINK_CTXFI
 
-#define CTXFI_DEBUG 1
+#define CTXFI_DEBUG 0
 
 #if CTXFI_DEBUG
 #define ctxfidbg(...) do { DBG_Logi("CTXFI: "); DBG_Logi(__VA_ARGS__); } while (0)

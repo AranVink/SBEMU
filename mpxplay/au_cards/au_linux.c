@@ -1,6 +1,6 @@
 #include "au_linux.h"
 
-#define AU_LINUX_DEBUG 1
+#define AU_LINUX_DEBUG 0
 
 #if AU_LINUX_DEBUG
 #define aulinuxdbg(...) do { DBG_Logi("au_linux: "); DBG_Logi(__VA_ARGS__); } while (0)
