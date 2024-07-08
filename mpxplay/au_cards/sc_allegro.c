@@ -7,7 +7,7 @@
 
 #ifdef AU_CARDS_LINK_ALLEGRO
 
-#define ALLEGRO_DEBUG 1
+#define ALLEGRO_DEBUG 0
 
 #if ALLEGRO_DEBUG
 #define allegrodbg(...) do { DBG_Logi("Allegro: "); DBG_Logi(__VA_ARGS__); } while (0)

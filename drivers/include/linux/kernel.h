@@ -272,7 +272,7 @@ struct irq_affinity_desc {
 #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof((arr)[0]))
 
 #ifndef PCI_DEBUG
-#define PCI_DEBUG 1
+#define PCI_DEBUG 0
 #endif
 
 // linux/printk.h:
