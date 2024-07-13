@@ -1243,6 +1243,7 @@ struct ac97_initial_values {
   uint16_t value;
 };
 
+// Source: AC97 specs, https://www.alsa-project.org/files/pub/datasheets/intel/ac97r21.pdf, 6.3 Mixer Registers
 static struct ac97_initial_values ac97_initial_values[] = {
     { AC97_RESET,           0x0000 },
     { AC97_MASTER,          0x0808 },
