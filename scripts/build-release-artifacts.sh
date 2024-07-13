@@ -15,21 +15,34 @@ FULL_PATH_TO_OUTPUT_ARTIFACTS=$(readlink -f "$PATH_TO_OUTPUT_ARTIFACTS")
 mkdir -p /tmp/sbemu_usb_img
 rm -rf /tmp/sbemu_usb_img/*
 pushd /tmp/sbemu_usb_img
-wget https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.3/official/FD13-LiteUSB.zip
-wget https://www.freedos.org/download/verify.txt
-grep -q "64a934585087ccd91a18c55e20ee01f5f6762be712eeaa5f456be543778f9f7e  FD13-LiteUSB.zip" verify.txt
-echo "64a934585087ccd91a18c55e20ee01f5f6762be712eeaa5f456be543778f9f7e  FD13-LiteUSB.zip" | shasum -a 256 --check
-unzip FD13-LiteUSB.zip
-rm FD13-LiteUSB.zip
-wget https://github.com/Baron-von-Riedesel/Jemm/releases/download/v5.84/JemmB_v584.zip
+
+if [ -z "${FD_FULL}" ]; then
+  wget --no-clobber https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.3/official/FD13-FullUSB.zip
+  wget --no-clobber https://www.freedos.org/download/verify.txt
+  grep -q "73eefe93ec0a50ac82e5367abcb0d256deccc0bb79eb6719c918d493b359edb2  FD13-FullUSB.zip" verify.txt
+  echo "73eefe93ec0a50ac82e5367abcb0d256deccc0bb79eb6719c918d493b359edb2  FD13-FullUSB.zip" | shasum -a 256 --check
+  unzip FD13-FullUSB.zip
+  rm FD13-FullUSB.zip
+  IMG="FD13FULL.img"
+else
+  wget --no-clobber https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/distributions/1.3/official/FD13-LiteUSB.zip
+  wget https://www.freedos.org/download/verify.txt
+  grep -q "64a934585087ccd91a18c55e20ee01f5f6762be712eeaa5f456be543778f9f7e  FD13-LiteUSB.zip" verify.txt
+  echo "64a934585087ccd91a18c55e20ee01f5f6762be712eeaa5f456be543778f9f7e  FD13-LiteUSB.zip" | shasum -a 256 --check
+  unzip FD13-LiteUSB.zip
+  rm FD13-LiteUSB.zip
+  IMG="FD13LITE.img"
+fi
+
+wget --no-clobber https://github.com/Baron-von-Riedesel/Jemm/releases/download/v5.84/JemmB_v584.zip
 echo "80bee162c9574066112a3204af6f72666428f7c139836f4418d92aae7bfb5056  JemmB_v584.zip" | shasum -a 256 --check
-wget https://github.com/crazii/HX/releases/download/v0.1-beta4fix2/HDPMI32i.zip
+wget --no-clobber https://github.com/crazii/HX/releases/download/v0.1-beta4fix2/HDPMI32i.zip
 echo "69a559f02a954afa2550bf8840adfaa27dad7eeeab93a12b2642c283bf3d5bcb  HDPMI32i.zip" | shasum -a 256 --check
-wget https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/1.3/base/ctmouse.zip
+wget --no-clobber https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/1.3/base/ctmouse.zip
 echo "a891124cd5b13e8141778fcae718f3b2667b0a49727ce92b782ab11a8c4bb63a  ctmouse.zip" | shasum -a 256 --check
 mkdir -p /tmp/SBEMU
 mkdir -p /tmp/mnt
-sudo mount FD13LITE.img /tmp/mnt -t vfat -o loop,offset=$((63*512)),rw,uid="$(id -u)",gid="$(id -g)"
+sudo mount "$IMG" /tmp/mnt -t vfat -o loop,offset=$((63*512)),rw,uid="$(id -u)",gid="$(id -g)"
 mkdir /tmp/mnt/sbemu
 cp "$FULL_PATH_TO_SBEMU_EXE" /tmp/mnt/sbemu
 cp "$FULL_PATH_TO_RELEASE_NOTES" /tmp/mnt/sbemu
@@ -66,7 +79,7 @@ mv SBEMU.zip "$FULL_PATH_TO_OUTPUT_ARTIFACTS"
 ls -lh SBEMU
 rm -rf SBEMU
 popd
-mv FD13LITE.img SBEMU-FD13-USB.img
+mv "$IMG" SBEMU-FD13-USB.img
 xz -k -9e SBEMU-FD13-USB.img
 mv SBEMU-FD13-USB.img.xz "$FULL_PATH_TO_OUTPUT_ARTIFACTS"
 popd
