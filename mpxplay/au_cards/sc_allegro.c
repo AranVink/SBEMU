@@ -21,24 +21,12 @@
 #include "../../drivers/maestro3/maestro3.h"
 
 static pci_device_s allegro_devices[] = {
-  {"Allegro-1", 0x125D, 0x1988, 0}, // Both ES1988S and ES1989S share this ID
-  {"Maestro-3i", 0x125D, 0x1998, 0}, // Both ES1983 and ES1983S share this ID
-// PCID
-// 0000	ES336H Fax Modem (Early Model)	
-// 1948	ES1948 Maestro-1	
-// 1968	ES1968 Maestro 2	
-// 1969	ES1938/ES1946/ES1969 Solo-1 Audiodrive	
-// 1978	ES1978 Maestro 2E	
-// 1988	ES1988 Allegro-1	
-// 1989	ESS Modem	
-// 1998	ES1983S Maestro-3i PCI Audio Accelerator	
-// 1999	ES1983S Maestro-3i PCI Modem Accelerator	
-// 199a	ES1983S Maestro-3i PCI Audio Accelerator	
-// 199b	ES1983S Maestro-3i PCI Modem Accelerator	
-// 2808	ES336H Fax Modem (Later Model)	
-// 2838	ES2838/2839 SuperLink Modem	
-// 2898	ES2898 Modem
-
+  {"Allegro-1",         0x125D, 0x1988, 0}, // ES1988S/ES1989S
+  {"Maestro 1",         0x125D, 0x1948, 0}, // ES1948
+  {"Maestro 2",         0x125D, 0x1968, 0}, // ES1968
+  {"Maestro 2E",        0x125D, 0x1978, 0}, // ES1978
+  {"Solo 1 Audiodrive", 0x125D, 0x1969, 0}, // ES1938/ES1946/ES1969 Solo-1
+  {"Maestro-3i",        0x125D, 0x1998, 0}, // ES1983/ES1983S
   {NULL,0,0,0}
 };
 
